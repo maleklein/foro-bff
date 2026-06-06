@@ -27,7 +27,7 @@ El servidor levanta en `http://localhost:4000`.
 | `PORT`         | Puerto del servidor                | `4000`                                |
 | `MONGODB_URI`  | URI de conexión a MongoDB          | `mongodb://localhost:27017/foro-bff`  |
 | `FRONTEND_URL` | URL del frontend (CORS)            | `http://localhost:3000`               |
-| `BACKEND_URL`  | URL base del BFF                   | `http://localhost:4000`               |
+| `BACKEND_URL`  | URL del backend Java               | `http://localhost:8080`               |
 
 ## Endpoints
 
@@ -43,6 +43,7 @@ src/
 ├── middlewares/   # Middlewares Express
 ├── models/        # Modelos Mongoose
 ├── routes/        # Definición de rutas
+├── services/      # Llamadas al backend Java
 ├── db.js          # Conexión a MongoDB
 └── index.js       # Entry point
 ```
