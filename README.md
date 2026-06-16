@@ -31,9 +31,35 @@ El servidor levanta en `http://localhost:4000`.
 
 ## Endpoints
 
-| Método | Ruta      | Descripción         |
-|--------|-----------|---------------------|
-| GET    | `/health` | Health check        |
+| Método | Ruta      | Descripción                              |
+|--------|-----------|------------------------------------------|
+| GET    | `/health` | Health check                             |
+| GET    | `/foros`  | Lista todos los foros desde MongoDB      |
+
+### GET /foros
+
+Devuelve la lista de foros guardados en MongoDB.
+
+**Respuesta `200 OK`** (array de foros, vacío si no hay):
+
+```json
+[
+  {
+    "_id": "65a...",
+    "name": "Ingeniería en Sistemas",
+    "description": "Carreras de informática y computación.",
+    "faculty": "fci",
+    "createdAt": "2026-06-16T12:00:00.000Z",
+    "updatedAt": "2026-06-16T12:00:00.000Z"
+  }
+]
+```
+
+**Respuesta `500`** si la consulta a MongoDB falla:
+
+```json
+{ "message": "Error al consultar los foros" }
+```
 
 ## Estructura
 

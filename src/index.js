@@ -33,6 +33,9 @@ app.get('/health', (req, res) => {
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+const forosRoutes = require('./routes/foros');
+app.use('/foros', forosRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
