@@ -35,6 +35,7 @@ El servidor levanta en `http://localhost:4000`.
 |--------|-----------|------------------------------------------|
 | GET    | `/health` | Health check                             |
 | GET    | `/foros`  | Lista todos los foros desde MongoDB      |
+| POST   | `/foros`  | Crea un foro nuevo en MongoDB            |
 
 ### GET /foros
 
@@ -60,6 +61,41 @@ Devuelve la lista de foros guardados en MongoDB.
 ```json
 { "message": "Error al consultar los foros" }
 ```
+
+### POST /foros
+
+Crea un foro nuevo en MongoDB.
+
+**Body** (JSON):
+
+```json
+{
+  "name": "Ingeniería en Sistemas",
+  "description": "Carreras de informática y computación.",
+  "faculty": "fci"
+}
+```
+
+**Respuesta `201 Created`** con el foro recién creado (incluye `_id` y timestamps):
+
+```json
+{
+  "_id": "65a...",
+  "name": "Ingeniería en Sistemas",
+  "description": "Carreras de informática y computación.",
+  "faculty": "fci",
+  "createdAt": "2026-06-16T12:00:00.000Z",
+  "updatedAt": "2026-06-16T12:00:00.000Z"
+}
+```
+
+**Respuesta `400 Bad Request`** si falta `name` o `faculty`:
+
+```json
+{ "message": "Los campos \"name\" y \"faculty\" son requeridos" }
+```
+
+**Respuesta `500`** si la inserción en MongoDB falla.
 
 ## Estructura
 
