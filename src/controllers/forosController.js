@@ -21,18 +21,18 @@ const listForos = async (req, res) => {
 };
 
 // Función que maneja el POST /foros
-// Recibe { name, description, faculty } y crea un foro nuevo en MongoDB.
+// Recibe { nombre, descripcion, facultad } y crea un foro nuevo en MongoDB.
 const createForo = async (req, res) => {
   // Extraemos los campos del body. Si vienen como undefined, las validaciones
   // de abajo los rechazan con 400.
-  const { name, description, faculty } = req.body || {};
+  const { nombre, descripcion, facultad } = req.body || {};
 
-  // Validación: name y faculty son obligatorios.
+  // Validación: nombre y facultad son obligatorios.
   // Usamos trim() para que un string solo de espacios no cuente como "presente".
-  // description es opcional (el schema del equipo no lo marca como required).
-  if (!name || !name.trim() || !faculty || !faculty.trim()) {
+  // descripcion es opcional (el schema del equipo no lo marca como required).
+  if (!nombre || !nombre.trim() || !facultad || !facultad.trim()) {
     return res.status(400).json({
-      message: 'Los campos "name" y "faculty" son requeridos',
+      message: 'Los campos "nombre" y "facultad" son requeridos',
     });
   }
 
@@ -41,9 +41,9 @@ const createForo = async (req, res) => {
     // Pasamos los campos uno por uno (no el body entero) para evitar que el
     // cliente nos meta campos no esperados (mass-assignment).
     const foro = await Foro.create({
-      name: name.trim(),
-      description: description ? description.trim() : undefined,
-      faculty: faculty.trim(),
+      nombre: nombre.trim(),
+      descripcion: descripcion ? descripcion.trim() : undefined,
+      facultad: facultad.trim(),
     });
 
     // 201 Created con el foro recién insertado (ya incluye _id, timestamps).
