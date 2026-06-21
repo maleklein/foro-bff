@@ -20,6 +20,26 @@ Backend for Frontend del proyecto Foro UAP.
 
 El servidor levanta en `http://localhost:4000`.
 
+## Seed de datos
+
+Para cargar datos iniciales en MongoDB (5 usuarios + 6 foros de prueba), con
+MongoDB corriendo localmente, ejecutar:
+
+```bash
+npm run seed
+```
+
+Esto **borra y recrea** las colecciones `users` y `foros`. Todos los usuarios
+usan la misma contraseña: `password123`.
+
+| Email                  | Rol       |
+|------------------------|-----------|
+| admin@uap.edu.ar       | admin     |
+| gianna@uap.edu.ar      | moderator |
+| malena@uap.edu.ar      | moderator |
+| milena@uap.edu.ar      | user      |
+| jperez@uap.edu.ar      | user      |
+
 ## Variables de entorno
 
 | Variable       | Descripción                        | Default                               |
