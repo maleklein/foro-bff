@@ -36,6 +36,9 @@ app.use('/auth', authRoutes);
 const forosRoutes = require('./routes/foros');
 app.use('/foros', forosRoutes);
 
+const syncRoutes = require('./routes/sync');
+app.use('/sync', syncRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

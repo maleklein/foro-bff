@@ -13,6 +13,11 @@ const foroSchema = new mongoose.Schema(
     faculty: {
       type: String,   // facultad a la que pertenece el foro (ej: "fci", "fce")
     },
+    externalId: {
+      type: Number,
+      unique: true,
+      sparse: true, // permite que foros creados por POST /foros (sin externalId) coexistan
+    },
   },
   // timestamps: true agrega createdAt y updatedAt automáticamente
   { timestamps: true }
