@@ -30,8 +30,8 @@ const DEMO_PASSWORD = 'password123';
 // passwordHash (el hash se genera en seed(), abajo).
 const USERS = [
   { email: 'admin@uap.edu.ar',  username: 'admin',   role: 'admin'     },
-  { email: 'gianna@uap.edu.ar', username: 'gianna',  role: 'moderator' },
-  { email: 'malena@uap.edu.ar', username: 'malena',  role: 'moderator' },
+  { email: 'gianna@uap.edu.ar', username: 'gianna',  role: 'admin' },
+  { email: 'malena@uap.edu.ar', username: 'malena',  role: 'admin' },
   { email: 'milena@uap.edu.ar', username: 'milena',  role: 'user'      },
   { email: 'jperez@uap.edu.ar', username: 'jperez',  role: 'user'      },
 ];
