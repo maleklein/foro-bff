@@ -42,33 +42,46 @@ const USERS = [
 // (humanidades, economicas, teologia, salud, instituto, preuniversitario,
 // general). El foro 'general' va al final, igual que en el ordenamiento de
 // la página de foros.
+//
+// Cada foro incluye `externalId` con el ID con el que el Backend Java va a
+// generar la misma fila (su seed inserta en el mismo orden, y MySQL asigna
+// AUTO_INCREMENT empezando en 1). Así, cuando el frontend dispara el botón
+// "Sincronizar", el syncController hace upsert por externalId y ACTUALIZA
+// estos documentos en vez de duplicarlos. Sin esto, el sync agregaba 6
+// foros nuevos y la página terminaba mostrando cards duplicadas.
 const FOROS = [
   {
+    externalId: 1,
     nombre: 'Humanidades',
     descripcion: 'Carreras de letras, historia, filosofía y educación.',
     facultad: 'humanidades',
   },
   {
+    externalId: 2,
     nombre: 'Ciencias Económicas',
     descripcion: 'Administración, contabilidad, comercio y economía.',
     facultad: 'economicas',
   },
   {
+    externalId: 3,
     nombre: 'Teología',
     descripcion: 'Estudios bíblicos, teológicos y pastorales.',
     facultad: 'teologia',
   },
   {
+    externalId: 4,
     nombre: 'Ciencias de la Salud',
     descripcion: 'Medicina, enfermería, nutrición y bioquímica.',
     facultad: 'salud',
   },
   {
+    externalId: 5,
     nombre: 'Instituto Superior',
     descripcion: 'Carreras técnicas y tecnicaturas del instituto.',
     facultad: 'instituto',
   },
   {
+    externalId: 6,
     nombre: 'Comunidad UAP',
     descripcion: 'Espacio general para toda la universidad.',
     facultad: 'general',
