@@ -9,7 +9,7 @@
 // OJO: borra y recrea las colecciones `users` y `foros`. NO correr en prod.
 //
 // Datos generados:
-//   - 5 usuarios con roles variados (admin, moderator, user) y passwords
+//   - 5 usuarios con roles variados (admin y user) y passwords
 //     encriptadas con bcrypt usando el helper de src/utils/crypto.js (GIA-17).
 //   - 6 foros que cubren las facultades soportadas por el frontend.
 
@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 
 const connectDB = require('../db');
 const User = require('../models/User');
-const Foro = require('../models/Foro');
+const Foro = require('../models/Foro'); 
 const { hashPassword } = require('../utils/crypto');
 
 // Contraseña en texto plano que comparten todos los usuarios de prueba.
@@ -30,11 +30,12 @@ const DEMO_PASSWORD = 'password123';
 // passwordHash (el hash se genera en seed(), abajo).
 const USERS = [
   { email: 'admin@uap.edu.ar',  username: 'admin',   role: 'admin'     },
-  { email: 'gianna@uap.edu.ar', username: 'gianna',  role: 'admin' },
-  { email: 'malena@uap.edu.ar', username: 'malena',  role: 'admin' },
+  { email: 'gianna@uap.edu.ar', username: 'gianna',  role: 'user'      },
+  { email: 'malena@uap.edu.ar', username: 'malena',  role: 'user'      },
   { email: 'milena@uap.edu.ar', username: 'milena',  role: 'user'      },
   { email: 'jperez@uap.edu.ar', username: 'jperez',  role: 'user'      },
 ];
+
 
 // ─── Foros de prueba ─────────────────────────────────────────────────────────
 // Los campos coinciden con el schema Foro del BFF: nombre, descripcion,
@@ -105,12 +106,9 @@ async function seed() {
       USERS.map((u) => ({ ...u, passwordHash }))
     );
     console.log(`${users.length} usuarios insertados`);
-
-    // 3. Insertamos los foros tal cual.
     const foros = await Foro.insertMany(FOROS);
     console.log(`${foros.length} foros insertados`);
 
-    // 4. Resumen amigable para la demo.
     console.log('\nSeed completado.');
     console.log('Credenciales de prueba (todas con la misma contraseña):');
     console.log(`   contraseña: ${DEMO_PASSWORD}`);
